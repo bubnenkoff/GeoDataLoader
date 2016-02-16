@@ -1,0 +1,1 @@
+В переменных окружения должен быть установлен путь до D:\code\GdalReprojectExample\gdal\gdal\plugins

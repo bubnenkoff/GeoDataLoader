@@ -1,0 +1,16 @@
+{
+	"name": "GeoDataLoader",
+	"description": "GeoDataLoader load various data types from remote servers.",
+	"copyright": "Copyright © 2016, Dmitry Bubnenkov",
+	"authors": ["Dmitry Bubnenkov"],
+	"versions": ["VibeCustomMain"],
+	"sourceFiles": ["source/arsd/dom.d", "source/parsers"],
+	"sourceFiles": ["logo.res"],
+	
+	"dependencies": {
+		"colorize": ">=1.0.5",
+		"ddbc": ">=0.2.11",
+		"vibe-d": "~>0.7.27",
+		"derelict-fi": "~>2.0.2"
+	}
+}

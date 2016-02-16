@@ -1,3 +1,5 @@
+module patternsloader;
+
 import std.file;
 import std.string;
 import std.stdio;
@@ -7,6 +9,9 @@ import std.string;
 import dbconnect;
 import dbinsert;
 import parseconfig;
+
+import ddbc.all;
+import ddbc.pods; // to get db.stmt.select work
 
 class PatternLoader
 {
@@ -22,19 +27,24 @@ class PatternLoader
 		this.config = config;
 	}
 
-	struct DBDatas 
+	struct img_patterns 
 	{
 		string myalias;
 		string type;
-		string baseurl;
-		string timeshift;
-		string month;
-		string year;
+		string url;
+		string prefix;
+		string dateformat;
+		string postfix;
 	}
 
 	void imgPattern()
 	{
+		auto patterns = db.stmt.select!img_patterns; //fixme
 
+		foreach(p;patterns)
+		{
+			writeln(p);
+		}
 	}
 
 

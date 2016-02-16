@@ -32,7 +32,8 @@ import parseconfig;
 import seismodownload;
 import imagedownload;
 import utils; // checkURL 
-import dbcheck; // checkURL 
+import dbcheck; // check DB
+import patternsloader; // pattern img load
 
 import imgparser;
 import georotac;
@@ -41,6 +42,7 @@ import geomagnetic_index;
 import kakioka;
 import solarindex;
 import ftplogs;
+
 
 //Globals
 Date currentdt;
@@ -259,6 +261,7 @@ void main(string[] args)
 		{
 			writeln("Loading images by pattern");
 			PatternLoader patternloader	= new PatternLoader(databaseinsert, db, config);
+			patternloader.imgPattern();
 		}		
 
 

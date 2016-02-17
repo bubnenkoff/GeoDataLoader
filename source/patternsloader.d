@@ -27,7 +27,7 @@ class PatternLoader
 		this.config = config;
 	}
 
-	struct img_patterns 
+	struct DBDatas 
 	{
 		string myalias;
 		string type;
@@ -35,16 +35,30 @@ class PatternLoader
 		string prefix;
 		string dateformat;
 		string postfix;
+		string interval;
 	}
+
 
 	void imgPattern()
 	{
-		auto patterns = db.stmt.select!img_patterns; //fixme
+		DBDatas dbdatas;
+		string sql = ("select * from " ~ config.dbname ~ ".img_patterns;");
+		auto patterns = db.stmt.executeQuery(sql);
 
-		foreach(p;patterns)
+		while(patterns.next())
 		{
-			writeln(p);
+			dbdatas.myalias = patterns.getString(1);
+			dbdatas.type = patterns.getString(2);
+			dbdatas.url = patterns.getString(3);
+			dbdatas.prefix = patterns.getString(4);
+			dbdatas.dateformat = patterns.getString(5);
+			dbdatas.postfix = patterns.getString(6);
+			dbdatas.interval = patterns.getString(7);
+
+			writeln(dbdatas.url);
+
 		}
+
 	}
 
 
